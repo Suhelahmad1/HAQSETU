@@ -1,0 +1,15 @@
+# Node modules (Backend aur Frontend dono ke ignore honge)
+**/node_modules/
+
+# Secrets aur Keys (.env files)
+**/.env
+**/.env.*
+
+# React/Vite Build folder
+**/dist/
+**/build/
+
+# Logs aur Cache
+*.log
+.DS_Store
+.vscode/

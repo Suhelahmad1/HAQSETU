@@ -1,0 +1,549 @@
+:root {
+  --primary: #0f172a;
+  --primary-light: #1e293b;
+  --accent: #dc2626;
+  --accent-hover: #b91c1c;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --success: #16a34a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Plus Jakarta Sans", "Noto Sans Devanagari", sans-serif;
+}
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.logo-svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--accent);
+}
+
+/* Top Hero Wrapper with Banner Background */
+.top-hero-wrapper {
+  position: relative;
+  width: 100%;
+  background: #0f172a
+    url("https://uploads.onecompiler.io/44ybdeezm/1786813109536/banner1.png")
+    no-repeat center top / cover;
+  color: white;
+  border-bottom: 4px solid var(--accent);
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.65) 0%,
+    rgba(15, 23, 42, 0.9) 100%
+  );
+  width: 100%;
+  height: 100%;
+}
+
+/* Header & Mobile Optimization */
+header {
+  background: transparent;
+  color: white;
+  padding: 1rem;
+  position: relative;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.logo span {
+  color: var(--accent);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Language Dropdown Select Styling */
+.lang-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.lang-select-icon {
+  position: absolute;
+  left: 10px;
+  color: white;
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.lang-dropdown {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 0.45rem 0.8rem 0.45rem 2.1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.lang-dropdown option {
+  background: var(--primary);
+  color: white;
+}
+
+/* Emergency Call Badge (Clean Responsive Layout) */
+.emergency-badge {
+  background: var(--accent);
+  color: white;
+  padding: 0.45rem 0.85rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  animation: pulse 2s infinite;
+  white-space: nowrap;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 0.8rem 0.5rem;
+  }
+  .logo {
+    font-size: 1.05rem;
+  }
+  .lang-dropdown {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem 0.4rem 1.8rem;
+  }
+  .lang-select-icon {
+    left: 8px;
+    font-size: 0.75rem;
+  }
+  .emergency-badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.65rem;
+  }
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  padding: 2rem 1rem 3rem;
+}
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(220, 38, 38, 0.35);
+  border: 1px solid rgba(220, 38, 38, 0.6);
+  color: #ffffff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  min-height: 4rem;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 1.5rem;
+    min-height: 4.5rem;
+  }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 2rem;
+  background-color: var(--accent);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 0.7s infinite;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero p {
+  color: #e2e8f0;
+  font-size: 1.05rem;
+  margin: 0 auto 1.8rem auto;
+  max-width: 700px;
+}
+.hero-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.highlight-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.2s;
+}
+.highlight-card:hover {
+  background: rgba(220, 38, 38, 0.3);
+  transform: translateY(-2px);
+}
+.highlight-card i {
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+.highlight-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.highlight-desc {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+}
+
+/* Layout & Cards */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.filter-wrapper {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.chip {
+  padding: 0.5rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+.chip.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.situation-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.law-badge {
+  background: #fee2e2;
+  color: var(--accent);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.step-box {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+}
+.step-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+.step-content {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 0.8rem;
+}
+
+/* Sidebar Widgets */
+.sidebar-widget {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.widget-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.helpline-item-link {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.helpline-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0.9rem;
+  border-radius: 8px;
+  background: #f1f5f9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.helpline-item-link:hover .helpline-item {
+  background: #e2e8f0;
+  transform: translateX(3px);
+}
+.helpline-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.helpline-number {
+  font-weight: 800;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+}
+.btn-submit {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Story & Tabs */
+.story-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.story-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+.story-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary);
+}
+.story-body {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  white-space: pre-line;
+}
+.vote-bar {
+  display: flex;
+  gap: 0.75rem;
+}
+.vote-btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.vote-btn:hover {
+  background: #e2e8f0;
+}
+
+.vote-btn.upvoted {
+  color: var(--success, #16a34a);
+  background: #dcfce7;
+  border-color: #86efac;
+  font-weight: 600;
+}
+
+.vote-btn.downvoted {
+  color: var(--accent, #dc2626);
+  background: #fee2e2;
+  border-color: #fca5a5;
+  font-weight: 600;
+}
+
+.tab-header {
+  display: flex;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+.tab-btn {
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 1000;
+}
+
+.law-badge {
+  background: #e2e8f0;
+  color: #334155;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.law-badge:hover,
+.law-badge.active {
+  background: #cbd5e1;
+  color: #0f172a;
+}
