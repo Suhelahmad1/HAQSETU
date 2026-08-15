@@ -3,22 +3,23 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-// Models path adjust kar lein (e.g. ../models/Story)
+// Apne Story model ka path check kar lena (agar server/models/Story.js hai toh ../models/Story hi rahega)
 const Story = require("../models/Story");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Connection
+// MongoDB Serverless Connection
 let isConnected = false;
 const connectDB = async () => {
   if (isConnected) return;
   try {
     await mongoose.connect(process.env.MONGO_URI);
     isConnected = true;
+    console.log("MongoDB Connected");
   } catch (err) {
-    console.error("MongoDB Error:", err);
+    console.error("MongoDB Connection Error:", err);
   }
 };
 
@@ -27,7 +28,7 @@ app.use(async (req, res, next) => {
   next();
 });
 
-// Routes
+// APIs
 app.get("/api/stories", async (req, res) => {
   try {
     const stories = await Story.find().sort({ createdAt: -1 });
@@ -71,4 +72,5 @@ app.put("/api/stories/:id/vote", async (req, res) => {
   }
 });
 
+// Vercel Serverless Function ke liye export
 module.exports = app;
