@@ -9,11 +9,23 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connect MongoDB
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected Successfully"))
-  .catch((err) => console.error("MongoDB Error:", err));
+// Connect MongoDB (Serverless-friendly check)
+let isConnected = false;
+const connectDB = async () => {
+  if (isConnected) return;
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    isConnected = true;
+    console.log("MongoDB Connected Successfully");
+  } catch (err) {
+    console.error("MongoDB Error:", err);
+  }
+};
+
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
 
 // GET all stories
 app.get("/api/stories", async (req, res) => {
@@ -37,6 +49,7 @@ app.post("/api/stories", async (req, res) => {
   }
 });
 
+// PUT vote update
 app.put("/api/stories/:id/vote", async (req, res) => {
   try {
     const { id } = req.params;
@@ -47,7 +60,7 @@ app.put("/api/stories/:id/vote", async (req, res) => {
       return res.status(404).json({ error: "Story not found" });
     }
 
-    // Purana vote null/subtract karo
+    // Purana vote subtract karo
     if (previousVote === "up")
       story.upvotes = Math.max(0, (story.upvotes || 0) - 1);
     if (previousVote === "down")
@@ -65,5 +78,5 @@ app.put("/api/stories/:id/vote", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Vercel Serverless Function ke liye export (No app.listen needed)
+module.exports = app;
